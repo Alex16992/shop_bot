@@ -10,8 +10,9 @@ datasource db {
 
 model User {
   id         Int      @id @default(autoincrement())
-  telegramId Int   @unique
   username   String?
+  telegramId String   @unique
+  accessLevel Int @default(0)
   createdAt  DateTime @default(now())
 }
 
@@ -27,7 +28,6 @@ model Product {
   description String
   price       Decimal  @db.Decimal(10, 2)
   categoryId  Int
-  category    Category @relation(fields: [categoryId], references: [id])
   createdAt   DateTime @default(now())
+  category    Category @relation(fields: [categoryId], references: [id])
 }
-
