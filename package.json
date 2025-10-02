@@ -7,6 +7,7 @@
     "start": "node ./build/bot.js",
     "dev": "bunx tsx src/bot.ts",
     "build": "bunx tsc",
+    "prisma:generate": "bunx prisma generate",
     "prisma:dev": "bunx prisma migrate dev",
     "prisma:deploy": "bunx prisma migrate deploy",
     "lint": "bunx biome lint",
@@ -15,18 +16,21 @@
     "format:check": "bunx biome format .",
     "check": "bunx biome check"
   },
+  "prisma": {
+    "seed": "bunx tsx prisma/seed.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
     "@types/bun": "latest",
-    "@types/node": "^24.5.2",
-    "prisma-generator-fake-data": "^0.16.2",
+    "@types/node": "^24.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.0.0",
     "@grammyjs/conversations": "^2.1.0",
     "@grammyjs/hydrate": "^1.6.0",
     "@grammyjs/menu": "^1.3.1",

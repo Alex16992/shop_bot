@@ -3,11 +3,6 @@ generator client {
   output   = "../generated/prisma"
 }
 
-generator custom_generator {
-    provider = "prisma-generator-fake-data"
-    output   = "../src/fake/fake-data.ts"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -16,25 +11,20 @@ datasource db {
 model User {
   id         Int      @id @default(autoincrement())
   telegramId Int   @unique
-  ///FAKE:faker.lorem.word()
   username   String?
   createdAt  DateTime @default(now())
 }
 
 model Category {
   id       Int       @id @default(autoincrement())
-  ///FAKE:faker.lorem.word()
   name     String
   products Product[]
 }
 
 model Product {
   id          Int      @id @default(autoincrement())
-  ///FAKE:faker.lorem.word()
   name        String
-  ///FAKE:faker.lorem.sentence()
   description String
-  ///FAKE:faker.number.float()
   price       Decimal  @db.Decimal(10, 2)
   categoryId  Int
   category    Category @relation(fields: [categoryId], references: [id])
