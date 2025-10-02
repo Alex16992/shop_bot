@@ -2,8 +2,10 @@ import { conversations } from "@grammyjs/conversations";
 import { hydrate } from "@grammyjs/hydrate";
 import { Bot, GrammyError, HttpError, session } from "grammy";
 import type { Product } from "../generated/prisma";
+import { profileCallback } from "./callback/profile";
 import { BOT_TOKEN } from "./check_env";
 import { startCommand } from "./commands";
+import { profileCommand } from "./commands/profile";
 import { auth } from "./middlewares/auth.middleware";
 import type { MyContext, SessionData } from "./types";
 
@@ -33,6 +35,10 @@ const products: Product[] = [];
 startCommand(bot);
 
 bot.command("products", (ctx) => ctx.reply(JSON.stringify(products)));
+
+profileCommand(bot);
+
+profileCallback(bot);
 
 // Error handler
 bot.catch((err) => {
