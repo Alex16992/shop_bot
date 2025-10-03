@@ -20,8 +20,9 @@ export const getProfile = async (ctx: MyContext) => {
 
   return `
 Ваш профиль:
-username: ${user.username ?? "null"}
-accessLevel: ${roleName}
+Имя: ${user.username ?? "null"}
+Уровень доступа: ${roleName}
+Баланс: ${user.balance}
 Дата регистрации: ${user.createdAt.toLocaleString("ru-RU")}
       `;
 };

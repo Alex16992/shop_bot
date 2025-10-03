@@ -1,4 +1,4 @@
-import type { Prisma, Product } from "../../../generated/prisma";
+import type { Prisma } from "../../../generated/prisma";
 import { shopMenu } from "../../menu/shop_menu";
 import type { MyContext } from "../../types";
 
