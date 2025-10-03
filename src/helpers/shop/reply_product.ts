@@ -13,33 +13,24 @@ export async function replyProduct(
 ) {
   if (!product) return ctx.reply("Ошибка получения товара.");
 
-  if (!ctx.callbackQuery) {
-    await ctx.reply(
-      `
+  const text = `
 ${product.name}
 ${product.description}
 
 Цена: ${product.price} руб.
-Категория: ${product.category.name}`,
-      {
-        reply_markup: productMenu(ctx, product.id),
-      }
-    );
+Категория: ${product.category.name}`;
+
+  if (!ctx.callbackQuery) {
+    await ctx.reply(text, {
+      reply_markup: productMenu(ctx, product.id),
+    });
 
     await ctx.answerCallbackQuery();
 
     return;
   }
 
-  await ctx.callbackQuery.message?.editText(
-    `
-${product.name}
-${product.description}
-
-Цена: ${product.price} руб.
-Категория: ${product.category.name}`,
-    {
-      reply_markup: productMenu(ctx, product.id),
-    }
-  );
+  await ctx.callbackQuery.message?.editText(text, {
+    reply_markup: productMenu(ctx, product.id),
+  });
 }

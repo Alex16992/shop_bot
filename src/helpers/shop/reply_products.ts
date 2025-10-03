@@ -11,8 +11,10 @@ export async function replyProducts(
 
   ctx.session.productsPage = page;
 
+  const text = `Наши товары:`;
+
   if (!ctx.callbackQuery) {
-    await ctx.reply(`Наши товары:`, {
+    await ctx.reply(text, {
       reply_markup: shopMenu(ctx, products),
     });
 
@@ -21,7 +23,7 @@ export async function replyProducts(
     return;
   }
 
-  await ctx.callbackQuery.message?.editText(`Наши товары:`, {
+  await ctx.callbackQuery.message?.editText(text, {
     reply_markup: shopMenu(ctx, products),
   });
 }
