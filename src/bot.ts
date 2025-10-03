@@ -1,7 +1,6 @@
 import { conversations } from "@grammyjs/conversations";
 import { hydrate } from "@grammyjs/hydrate";
-import { Bot, GrammyError, HttpError, session } from "grammy";
-import type { Product } from "../generated/prisma";
+import { Bot, session } from "grammy";
 import { productsCallback } from "./callback/products";
 import { profileCallback } from "./callback/profile";
 import { BOT_TOKEN } from "./check_env";
