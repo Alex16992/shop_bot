@@ -27,8 +27,10 @@ export function shopMenu(
       "<",
       page !== 1 ? `click-products-${page > 1 ? page - 1 : 1}` : "click-empty"
     )
-    .text(`${page}`)
+    .text(`${page}`, "click-empty")
     .text(">", `click-products-${page + 1}`)
+    .row()
+    .text("Категории", "click-categories-1")
     .row()
     .text("Профиль", "click-profile");
 

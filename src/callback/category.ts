@@ -1,16 +1,18 @@
 import type { Bot } from "grammy";
-import { getCategory } from "../helpers/shop/get_category";
-import { replyCategory } from "../helpers/shop/reply_category";
+import { getProducts } from "../helpers/shop/get_products";
+import { replyProducts } from "../helpers/shop/reply_products";
 import type { MyContext } from "../types";
 
 export const categoryCallback = (bot: Bot<MyContext>) => {
-  bot.callbackQuery(/click-categories-(\d+)/, async (ctx) => {
-    const page = Number(ctx.match[1]); // номер страницы
+  bot.callbackQuery(/click-category-(\d+)/, async (ctx) => {
+    const categoryId = Number(ctx.match[1]);
 
-    const categories = await getCategory(ctx, page);
+    ctx.session.categoryId = categoryId;
 
-    if (categories?.length !== 0) {
-      replyCategory(ctx, page, categories);
+    const products = await getProducts(ctx, 1, categoryId);
+
+    if (products?.length !== 0) {
+      replyProducts(ctx, 1, products);
     }
 
     await ctx.answerCallbackQuery();

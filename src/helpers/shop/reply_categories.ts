@@ -2,7 +2,7 @@ import type { Category } from "../../../generated/prisma";
 import { categoryMenu } from "../../menu/category_menu";
 import type { MyContext } from "../../types";
 
-export async function replyCategory(
+export async function replyCategories(
   ctx: MyContext,
   page: number,
   categories: Category[] | null
