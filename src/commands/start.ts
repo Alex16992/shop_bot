@@ -1,8 +1,8 @@
 import type { Bot } from "grammy";
+import { getProfile } from "../helpers/user/get_profile";
 import { mainMenu } from "../menu/main_menu";
 import { UserDbService } from "../services/user";
 import type { MyContext } from "../types";
-import { getProfile } from "../user/get_profile";
 
 export const startCommand = (bot: Bot<MyContext>) => {
   bot.command("start", async (ctx) => {
@@ -11,7 +11,7 @@ export const startCommand = (bot: Bot<MyContext>) => {
 
     UserDbService.authOrCreateUser(ctx.from.id.toString(), ctx.from.username);
 
-    ctx.reply(await getProfile(bot, ctx), {
+    ctx.reply(await getProfile(ctx), {
       reply_markup: mainMenu,
     });
   });

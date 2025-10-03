@@ -12,4 +12,5 @@ export type MyContext = Context &
 export interface SessionData {
   data: Record<string, any>;
   accessLevel: number;
+  productsPage: number;
 }

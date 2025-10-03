@@ -2,6 +2,7 @@ import { conversations } from "@grammyjs/conversations";
 import { hydrate } from "@grammyjs/hydrate";
 import { Bot, GrammyError, HttpError, session } from "grammy";
 import type { Product } from "../generated/prisma";
+import { productsCallback } from "./callback/products";
 import { profileCallback } from "./callback/profile";
 import { BOT_TOKEN } from "./check_env";
 import { startCommand } from "./commands";
@@ -12,6 +13,7 @@ import type { MyContext, SessionData } from "./types";
 function sessionInitial(): SessionData {
   return {
     accessLevel: 0,
+    productsPage: 1,
     data: {},
   };
 }
@@ -39,6 +41,7 @@ bot.command("products", (ctx) => ctx.reply(JSON.stringify(products)));
 profileCommand(bot);
 
 profileCallback(bot);
+productsCallback(bot);
 
 // Error handler
 bot.catch((err) => {

@@ -1,8 +1,7 @@
-import type { Bot } from "grammy";
-import prisma from "../prisma";
-import type { MyContext } from "../types";
+import prisma from "../../prisma";
+import type { MyContext } from "../../types";
 
-export const getProfile = async (_bot: Bot<MyContext>, ctx: MyContext) => {
+export const getProfile = async (ctx: MyContext) => {
   if (!ctx.from) return "Ошибка получения данных пользователя телеграм.";
 
   const user = await prisma.user.findUnique({
