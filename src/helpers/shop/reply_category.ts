@@ -1,5 +1,5 @@
 import type { Category } from "../../../generated/prisma";
-import { shopMenu } from "../../menu/shop_menu";
+import { categoryMenu } from "../../menu/category_menu";
 import type { MyContext } from "../../types";
 
 export async function replyCategory(
@@ -15,7 +15,7 @@ export async function replyCategory(
 
   if (!ctx.callbackQuery) {
     await ctx.reply(text, {
-      reply_markup: shopMenu(ctx, categories),
+      reply_markup: categoryMenu(ctx, categories),
     });
 
     await ctx.answerCallbackQuery();
@@ -24,6 +24,6 @@ export async function replyCategory(
   }
 
   await ctx.callbackQuery.message?.editText(text, {
-    reply_markup: shopMenu(ctx, categories),
+    reply_markup: categoryMenu(ctx, categories),
   });
 }

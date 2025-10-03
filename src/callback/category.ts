@@ -4,7 +4,7 @@ import { replyCategory } from "../helpers/shop/reply_category";
 import type { MyContext } from "../types";
 
 export const categoryCallback = (bot: Bot<MyContext>) => {
-  bot.callbackQuery(/click-category-(\d+)/, async (ctx) => {
+  bot.callbackQuery(/click-categories-(\d+)/, async (ctx) => {
     const page = Number(ctx.match[1]); // номер страницы
 
     const categories = await getCategory(ctx, page);
