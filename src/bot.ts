@@ -1,11 +1,9 @@
 import { conversations } from "@grammyjs/conversations";
 import { hydrate } from "@grammyjs/hydrate";
 import { Bot, session } from "grammy";
-import { productsCallback } from "./callback/products";
-import { profileCallback } from "./callback/profile";
+import { productsCallback, profileCallback } from "./callback";
 import { BOT_TOKEN } from "./check_env";
-import { startCommand } from "./commands";
-import { profileCommand } from "./commands/profile";
+import { profileCommand, startCommand } from "./commands";
 import { handleError } from "./error";
 import { auth } from "./middlewares/auth.middleware";
 import type { MyContext, SessionData } from "./types";
