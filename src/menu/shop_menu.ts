@@ -9,7 +9,7 @@ export function shopMenu(
   const keyboard = new InlineKeyboard();
 
   for (const product of products) {
-    keyboard.text(product.name, `product-${product.id}`).row();
+    keyboard.text(product.name, `click-product-${product.id}`).row();
   }
 
   keyboard

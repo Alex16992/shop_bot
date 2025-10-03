@@ -2,6 +2,7 @@ import { conversations } from "@grammyjs/conversations";
 import { hydrate } from "@grammyjs/hydrate";
 import { Bot, session } from "grammy";
 import { productsCallback, profileCallback } from "./callback";
+import { productCallback } from "./callback/product";
 import { BOT_TOKEN } from "./check_env";
 import { profileCommand, startCommand } from "./commands";
 import { handleError } from "./error";
@@ -36,6 +37,7 @@ profileCommand(bot);
 
 profileCallback(bot);
 productsCallback(bot);
+productCallback(bot);
 
 // Error handler
 handleError(bot);
