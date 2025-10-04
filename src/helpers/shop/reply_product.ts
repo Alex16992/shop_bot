@@ -1,3 +1,4 @@
+import { InputFile } from "grammy";
 import type { Prisma } from "../../../generated/prisma";
 import { productMenu } from "../../menu/product_menu";
 import type { MyContext } from "../../types";
@@ -25,12 +26,18 @@ ${product.description}
       reply_markup: productMenu(ctx, product.id),
     });
 
-    await ctx.answerCallbackQuery();
-
     return;
   }
 
-  await ctx.callbackQuery.message?.editText(text, {
-    reply_markup: productMenu(ctx, product.id),
-  });
+  await ctx.editMessageMedia(
+    {
+      type: "photo",
+      media: new InputFile(`src/images/${product.category.image}`),
+      caption: text,
+    },
+    {
+      reply_markup: productMenu(ctx, product.id),
+    }
+  );
+  await ctx.answerCallbackQuery();
 }

@@ -19,10 +19,11 @@ export const startCommand = (bot: Bot<MyContext>) => {
       .row()
       .text("ℹ️ О нас")
       .row()
-      .text("🌐 Сменить язык | Change language");
+      .text("🌐 Сменить язык | Change language")
+      .resized();
 
     ctx.replyWithSticker(
-      "CAACAgIAAxkBAAE8A9ho4O2-WYsZst1dqR7zWdBpDkQ6PgACCwADDkfHKKig9PrirOHBNgQ",
+      "CAACAgIAAxkBAAE8BM5o4QFyLYoqHJc2GKDszKL_euJA7AACdQQAAsxUSQk-AwAB8-URJbU2BA",
       {
         reply_markup: keyboard,
       }

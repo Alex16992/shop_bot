@@ -1,3 +1,4 @@
+import { InputFile } from "grammy";
 import type { Prisma } from "../../../generated/prisma";
 import { shopMenu } from "../../menu/shop_menu";
 import type { MyContext } from "../../types";
@@ -17,19 +18,30 @@ export async function replyProducts(
 
   if (!products[0]) return ctx.reply("Ошибка получения категорий.");
 
-  const text = `Наши товары категории ${products[0].category.name}:`;
+  const text = `Наши товары категории ${products[0].category.name.toString().substring(3)}:`;
 
   if (!ctx.callbackQuery) {
-    await ctx.reply(text, {
-      reply_markup: shopMenu(ctx, products),
-    });
-
-    await ctx.answerCallbackQuery();
+    await ctx.replyWithPhoto(
+      new InputFile(`src/images/${products[0].category.image}`),
+      {
+        caption: text,
+        reply_markup: shopMenu(ctx, products),
+      }
+    );
 
     return;
   }
 
-  await ctx.callbackQuery.message?.editText(text, {
-    reply_markup: shopMenu(ctx, products),
-  });
+  await ctx.editMessageMedia(
+    {
+      type: "photo",
+      media: new InputFile(`src/images/${products[0].category.image}`),
+      caption: text,
+    },
+    {
+      reply_markup: shopMenu(ctx, products),
+    }
+  );
+
+  await ctx.answerCallbackQuery();
 }

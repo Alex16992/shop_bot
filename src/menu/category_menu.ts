@@ -22,13 +22,13 @@ export function categoryMenu(
     keyboard.row();
   }
 
-  keyboard
-    .text(
-      "<",
-      page !== 1 ? `click-categories-${page > 1 ? page - 1 : 1}` : "click-empty"
-    )
-    .text(`${page}`, "click-empty")
-    .text(">", `click-categories-${page + 1}`);
+  // keyboard
+  //   .text(
+  //     "<",
+  //     page !== 1 ? `click-categories-${page > 1 ? page - 1 : 1}` : "click-empty"
+  //   )
+  //   .text(`${page}`, "click-empty")
+  //   .text(">", `click-categories-${page + 1}`);
 
   return keyboard;
 }

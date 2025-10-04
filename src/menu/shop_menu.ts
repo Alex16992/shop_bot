@@ -1,26 +1,19 @@
 import { InlineKeyboard } from "grammy";
+import type { Product } from "../../generated/prisma";
 import type { MyContext } from "../types";
 
-export function shopMenu(
-  ctx: MyContext,
-  products: { id: number; name: string }[]
-) {
+export function shopMenu(ctx: MyContext, products: Product[]) {
   const page = ctx.session.productsPage ?? 1;
   const keyboard = new InlineKeyboard();
 
   products.forEach((product, i) => {
-    keyboard.text(product.name, `click-product-${product.id}`);
-
-    // после каждой второй кнопки переносим строку
-    if ((i + 1) % 2 === 0) {
-      keyboard.row();
-    }
+    keyboard
+      .text(
+        `${product.name} - ${product.price} руб.`,
+        `click-product-${product.id}`
+      )
+      .row();
   });
-
-  // если продуктов нечётное количество – переносим последнюю кнопку вниз
-  if (products.length % 2 !== 0) {
-    keyboard.row();
-  }
 
   keyboard
     .text(

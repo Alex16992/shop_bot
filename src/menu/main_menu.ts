@@ -1,6 +1,8 @@
 import { InlineKeyboard } from "grammy";
 
 export const mainMenu = new InlineKeyboard()
-  .text("История", "click-history")
+
+  .text("💳 Пополнить баланс", "click-balance")
   .row()
-  .text("Пополнить баланс", "click-balance");
+  .text("🛒 История", "click-history")
+  .text("🎫 Реферальная программа", "click-referral");

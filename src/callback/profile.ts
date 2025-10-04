@@ -1,4 +1,5 @@
 import type { Bot } from "grammy";
+import { InputFile } from "grammy";
 import { getProfile } from "../helpers/user/get_profile";
 import { mainMenu } from "../menu/main_menu";
 import type { MyContext } from "../types";
@@ -11,7 +12,7 @@ export const profileCallback = (bot: Bot<MyContext>) => {
 
     ctx.callbackQuery.message?.editMedia({
       type: "photo",
-      media: "images/profile.jpg",
+      media: new InputFile("src/images/profile.jpg"),
     });
 
     await ctx.answerCallbackQuery();

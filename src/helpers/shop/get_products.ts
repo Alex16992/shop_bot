@@ -17,10 +17,10 @@ export const getProducts = async (
     if (categoryId) {
       return prisma.product.findMany({
         where: { categoryId: categoryId },
-        skip: (page - 1) * 20,
-        take: 20,
+        skip: (page - 1) * 8,
+        take: 8,
         orderBy: {
-          name: "desc",
+          price: "asc",
         },
         include: {
           category: true,
@@ -31,10 +31,10 @@ export const getProducts = async (
 
       return prisma.product.findMany({
         where: { categoryId: categoryId },
-        skip: (page - 1) * 20,
-        take: 10,
+        skip: (page - 1) * 8,
+        take: 8,
         orderBy: {
-          name: "desc",
+          price: "asc",
         },
         include: {
           category: true,
