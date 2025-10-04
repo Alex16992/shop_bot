@@ -13,8 +13,10 @@ import { emptyCallback } from "./callback/empty";
 import { BOT_TOKEN } from "./check_env";
 import { profileCommand, startCommand } from "./commands";
 import { handleError } from "./error";
+import { aboutUsHears } from "./hears/about_us";
 import { catalogHears } from "./hears/catalog";
 import { profileHears } from "./hears/profile";
+import { supportHears } from "./hears/support";
 import { auth } from "./middlewares/auth.middleware";
 import type { MyContext, SessionData } from "./types";
 
@@ -48,6 +50,8 @@ profileCommand(bot);
 
 catalogHears(bot);
 profileHears(bot);
+aboutUsHears(bot);
+supportHears(bot);
 
 categoryCallback(bot);
 categoriesCallback(bot);

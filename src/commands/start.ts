@@ -1,5 +1,6 @@
-import { type Bot, InputFile, Keyboard } from "grammy";
+import { type Bot, InputFile } from "grammy";
 import { getProfile } from "../helpers/user/get_profile";
+import { keyboard } from "../menu/keyboard";
 import { mainMenu } from "../menu/main_menu";
 import { UserDbService } from "../services/user";
 import type { MyContext } from "../types";
@@ -10,17 +11,6 @@ export const startCommand = (bot: Bot<MyContext>) => {
       return ctx.reply("Ошибка получения данных пользователя телеграм.");
 
     UserDbService.authOrCreateUser(ctx.from.id.toString(), ctx.from.username);
-
-    const keyboard = new Keyboard()
-      .text("🛍️ Каталог")
-      .row()
-      .text("👤 Профиль")
-      .text("⚠️ Поддержка")
-      .row()
-      .text("ℹ️ О нас")
-      .row()
-      .text("🌐 Сменить язык | Change language")
-      .resized();
 
     ctx.replyWithSticker(
       "CAACAgIAAxkBAAE8BM5o4QFyLYoqHJc2GKDszKL_euJA7AACdQQAAsxUSQk-AwAB8-URJbU2BA",
