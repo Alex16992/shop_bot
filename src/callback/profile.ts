@@ -9,6 +9,11 @@ export const profileCallback = (bot: Bot<MyContext>) => {
       reply_markup: mainMenu,
     });
 
+    ctx.callbackQuery.message?.editMedia({
+      type: "photo",
+      media: "images/profile.jpg",
+    });
+
     await ctx.answerCallbackQuery();
   });
 };

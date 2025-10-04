@@ -30,9 +30,7 @@ export function shopMenu(
     .text(`${page}`, "click-empty")
     .text(">", `click-products-${page + 1}`)
     .row()
-    .text("Категории", "click-categories-1")
-    .row()
-    .text("Профиль", "click-profile");
+    .text("Категории", "click-categories-1");
 
   return keyboard;
 }

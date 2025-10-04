@@ -8,9 +8,7 @@ export function productMenu(ctx: MyContext, productId: number) {
   keyboard
     .text("Купить", `click-product-buy-${productId}`)
     .row()
-    .text("Назад", `click-products-${page}`)
-    .row()
-    .text("Профиль", "click-profile");
+    .text("Назад", `click-products-${page}`);
 
   return keyboard;
 }

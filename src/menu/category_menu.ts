@@ -28,9 +28,7 @@ export function categoryMenu(
       page !== 1 ? `click-categories-${page > 1 ? page - 1 : 1}` : "click-empty"
     )
     .text(`${page}`, "click-empty")
-    .text(">", `click-categories-${page + 1}`)
-    .row()
-    .text("Профиль", "click-profile");
+    .text(">", `click-categories-${page + 1}`);
 
   return keyboard;
 }
