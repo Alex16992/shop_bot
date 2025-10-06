@@ -14,5 +14,6 @@ export interface SessionData {
   accessLevel: number;
   productsPage: number;
   categoriesPage: number;
+  historyPage: number;
   categoryId: number;
 }

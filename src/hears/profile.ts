@@ -7,8 +7,9 @@ import type { MyContext } from "../types";
 export const profileHears = (bot: Bot<MyContext>) => {
   bot.hears("👤 Профиль", async (ctx: MyContext) => {
     if (!ctx.callbackQuery) {
-      ctx.reply(`${await getProfile(ctx)} \n\n`, {
+      ctx.replyWithPhoto(new InputFile("src/images/profile.jpg"), {
         reply_markup: mainMenu,
+        caption: `${await getProfile(ctx)} \n\n`,
       });
     } else {
       ctx.callbackQuery.message?.editText(`${await getProfile(ctx)}`, {
@@ -20,7 +21,5 @@ export const profileHears = (bot: Bot<MyContext>) => {
         media: new InputFile("src/images/profile.jpg"),
       });
     }
-
-    await ctx.answerCallbackQuery();
   });
 };

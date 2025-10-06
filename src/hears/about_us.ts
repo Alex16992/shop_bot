@@ -22,6 +22,5 @@ GameAccountsBot — удобный Telegram-бот для покупки и пр
 
 * Есть исключения.
         `);
-    await ctx.answerCallbackQuery();
   });
 };

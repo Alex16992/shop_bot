@@ -2,21 +2,25 @@ import { conversations } from "@grammyjs/conversations";
 import { hydrate } from "@grammyjs/hydrate";
 import { Bot, session } from "grammy";
 import {
+  balanceCallback,
+  buyProductCallback,
   categoriesCallback,
+  categoryCallback,
+  emptyCallback,
+  historyCallback,
   productCallback,
   productsCallback,
   profileCallback,
 } from "./callback";
-import { balanceCallback } from "./callback/balance";
-import { categoryCallback } from "./callback/category";
-import { emptyCallback } from "./callback/empty";
 import { BOT_TOKEN } from "./check_env";
 import { profileCommand, startCommand } from "./commands";
 import { handleError } from "./error";
-import { aboutUsHears } from "./hears/about_us";
-import { catalogHears } from "./hears/catalog";
-import { profileHears } from "./hears/profile";
-import { supportHears } from "./hears/support";
+import {
+  aboutUsHears,
+  catalogHears,
+  profileHears,
+  supportHears,
+} from "./hears";
 import { auth } from "./middlewares/auth.middleware";
 import type { MyContext, SessionData } from "./types";
 
@@ -25,6 +29,7 @@ function sessionInitial(): SessionData {
     accessLevel: 0,
     productsPage: 1,
     categoriesPage: 1,
+    historyPage: 1,
     categoryId: 0,
     data: {},
   };
@@ -60,6 +65,8 @@ productsCallback(bot);
 productCallback(bot);
 emptyCallback(bot);
 balanceCallback(bot);
+buyProductCallback(bot);
+historyCallback(bot);
 
 // Error handler
 handleError(bot);

@@ -14,6 +14,5 @@ export const supportHears = (bot: Bot<MyContext>) => {
 
 Мы ценим ваше мнение и всегда готовы улучшать наш сервис!
         `);
-    await ctx.answerCallbackQuery();
   });
 };
